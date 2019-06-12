@@ -9,6 +9,7 @@ namespace TB.Infra.Data.Contexts
 {
     public class Context : DbContext
     {
+        public DbSet<User> Users { get; set; }
         public DbSet<Project> Projects { get; set; }
 
         public IDbContextTransaction Transaction { get; private set; }
@@ -74,6 +75,7 @@ namespace TB.Infra.Data.Contexts
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new ProjectMap());
         }
     }
