@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TB.Infra.Data", "TB.Infra.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TB.Infra.Ioc", "TB.Infra.Ioc\TB.Infra.Ioc.csproj", "{43CEE6F3-1F1F-49E4-8CC4-AFC144CB649D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TB.Service.Api", "TB.Web.Api\TB.Service.Api.csproj", "{75833492-FA2E-44AE-9C71-F5E37A7D41ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TB.Service.Api", "TB.Service.Api\TB.Service.Api.csproj", "{75833492-FA2E-44AE-9C71-F5E37A7D41ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
