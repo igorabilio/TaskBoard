@@ -19,6 +19,7 @@ namespace TB.Infra.Data.Repositories
 
         public Guid Add(TEntity entity)
         {
+            entity.Id = Guid.NewGuid();
             context.TransactionInit();
             var id = context.Set<TEntity>().Add(entity).Entity.Id;
             context.SendChanges();
