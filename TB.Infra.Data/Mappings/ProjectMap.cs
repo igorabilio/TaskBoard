@@ -15,7 +15,7 @@ namespace TB.Infra.Data.Mappings
             builder.Property(c => c.Code)
                 .IsRequired()
                 .HasColumnName("code")
-                .HasMaxLength(150);
+                .HasMaxLength(10);
 
             builder.Property(c => c.Name)
                 .IsRequired()
@@ -28,6 +28,10 @@ namespace TB.Infra.Data.Mappings
 
             builder.Property(c => c.DueDate)
                 .HasColumnName("due_date");
+
+            builder.Property(c => c.Owner)
+                .IsRequired()
+                .HasColumnName("owner");
         }
     }
 }

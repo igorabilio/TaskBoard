@@ -8,5 +8,6 @@ namespace TB.Aplication.DTO
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime DueDate { get; set; }
+        public Guid Owner { get; set; }
     }
 }

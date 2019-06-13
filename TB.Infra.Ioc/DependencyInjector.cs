@@ -14,18 +14,19 @@ namespace TB.Infra.Ioc
         {
             //application
             svcCollection.AddScoped(typeof(IBaseApp<,>), typeof(BaseServiceApp<,>));
-            svcCollection.AddScoped<IProjectApp, ProjectApp>();
             svcCollection.AddScoped<IUserApp, UserApp>();
+            svcCollection.AddScoped<IProjectApp, ProjectApp>();
 
             //Domain
             svcCollection.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
-            svcCollection.AddScoped<IProjectService, ProjectService>();
             svcCollection.AddScoped<IUserService, UserService>();
+            svcCollection.AddScoped<IProjectService, ProjectService>();
 
             //Repository
             svcCollection.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            svcCollection.AddScoped<IProjectRepository, ProjectRepository>();
             svcCollection.AddScoped<IUserRepository, UserRepository>();
+            svcCollection.AddScoped<IProjectRepository, ProjectRepository>();
+            
         }
     }
 }
