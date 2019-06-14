@@ -19,15 +19,30 @@ namespace TB.Service.Api
             Configuration = configuration;
         }
 
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Context>(o => o.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             DependencyInjector.Register(services);
+
             services.AddAutoMapper(x => x.AddProfile(new MappingEntities()));
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
@@ -47,6 +62,8 @@ namespace TB.Service.Api
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             //app.UseHttpsRedirection();
 
