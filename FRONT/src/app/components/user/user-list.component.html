@@ -2,12 +2,13 @@
   <div class="row">
     <!-- User table -->
     <div class="col-md-12">
-      <div class="inner">
-        <h3>Users</h3>
+      <div class="inner">        
+        <h3>
+          Users
+          <div style="text-align: right;"><a class="btn btn-outline-primary" routerLink="/user-add">Add User</a></div></h3>
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Name</th>
               <th scope="col">Username</th>
               <th scope="col">Email</th>
@@ -16,17 +17,17 @@
           </thead>
           <tbody>
             <tr *ngFor="let user of usersList">
-              <th scope="row">{{user.id}}</th>
               <td>{{user.name}}</td>
               <td>{{user.username}}</td>
               <td>{{user.email}}</td>
               <td>
-                <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-user/', user.id]">Edit</button>
+                <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/user-edit/', user.id]">Edit</button>
                 <button type="button" class="btn btn-danger btn-sm" (click)="delete(user)">Remove</button>
               </td>
             </tr>
           </tbody>
         </table>
+        
       </div>
     </div>
   </div>
