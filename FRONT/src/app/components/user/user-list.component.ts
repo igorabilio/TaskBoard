@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-import { UserService } from '../../../shared/user.service';
+import { UserService } from '../../shared/user/user.service';
 
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
 })
-export class ListComponent implements OnInit {
+export class UserListComponent implements OnInit {
 
   usersList: any = [];
   

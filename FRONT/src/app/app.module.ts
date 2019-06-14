@@ -6,21 +6,21 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { UserService } from './shared/user.service';
+import { UserService } from './shared/user/user.service';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { AddComponent } from './components/user/add/add.component';
-import { EditComponent } from './components/user/edit/edit.component';
-import { ListComponent } from './components/user/list/list.component';
+import { UserAddComponent } from './components/user/user-add.component';
+import { UserEditComponent } from './components/user/user-edit.component';
+import { UserListComponent } from './components/user/user-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddComponent,
-    EditComponent,
-    ListComponent
+    UserAddComponent,
+    UserEditComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

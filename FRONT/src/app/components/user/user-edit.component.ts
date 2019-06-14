@@ -2,14 +2,14 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { UserService } from '../../../shared/user.service';
+import { UserService } from '../../shared/user/user.service';
 
 @Component({
   selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  templateUrl: './user-edit.component.html',
+  styleUrls: ['./user-edit.component.css']
 })
-export class EditComponent implements OnInit {
+export class UserEditComponent implements OnInit {
 
   usersList: any = [];
   updateUserForm: FormGroup;
