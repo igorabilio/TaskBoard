@@ -11,6 +11,9 @@ import { ProjectService } from './shared/project/project.service'
 
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { HeaderComponent } from './components/header/header.component';
+import { DashboardComponent } from './components/home/dashboard/dashboard.component';
+
 import { UserAddComponent } from './components/user/user-add/user-add.component';
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
 import { UserListComponent } from './components/user/user-list/user-list.component';
@@ -18,12 +21,12 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
 import { ProjectAddComponent } from './components/project/project-add/project-add.component';
 import { ProjectListComponent } from './components/project/project-list/project-list.component';
 import { ProjectEditComponent } from './components/project/project-edit/project-edit.component';
-import { DashboardComponent } from './components/home/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     DashboardComponent,
     UserAddComponent,
     UserEditComponent,

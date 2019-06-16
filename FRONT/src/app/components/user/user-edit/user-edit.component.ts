@@ -28,7 +28,8 @@ export class UserEditComponent implements OnInit {
           id: [data.id],
           name: [data.name],
           username: [data.username],
-          email: [data.email]
+          email: [data.email],
+          status: [data.status]
         })
       });
   }
@@ -38,7 +39,8 @@ export class UserEditComponent implements OnInit {
       id: [''],
       name: [''],
       username: [''],
-      email: ['']
+      email: [''],
+      status: ['']
     });
   }
 
