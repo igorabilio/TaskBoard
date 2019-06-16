@@ -39,7 +39,7 @@ export class ProjectService {
   // POST
   Add(data): Observable<Project> {
     return this.http
-      .put<Project>(this.baseurl, JSON.stringify(data), this.httpOptions)
+      .post<Project>(this.baseurl, JSON.stringify(data), this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl))
   }
 

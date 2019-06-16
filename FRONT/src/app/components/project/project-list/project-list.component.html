@@ -21,7 +21,7 @@
                 <td>{{project.name}}</td>
                 <td>{{project.dueDate}}</td>
                 <td>
-                  <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/edit-project/', project.id]">Edit</button>
+                  <button type="button" class="btn btn-success btn-sm move-right" [routerLink]="['/project-edit/', project.id]">Edit</button>
                   <button type="button" class="btn btn-danger btn-sm" (click)="delete(project)">Remove</button>
                 </td>
               </tr>

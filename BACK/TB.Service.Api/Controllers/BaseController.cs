@@ -63,11 +63,13 @@ namespace TB.Service.Api.Controllers
             }
         }
 
-        [HttpPut]
-        public IActionResult Update([FromBody] DTOEntity data)
+        [HttpPost]
+        [Route("{id}")]
+        public IActionResult Update(Guid id, [FromBody] DTOEntity data)
         {
             try
             {
+                data.ID = id;
                 app.Update(data);
                 return new OkObjectResult(true);
             }

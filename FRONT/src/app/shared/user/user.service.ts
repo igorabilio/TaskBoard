@@ -39,7 +39,7 @@ export class UserService {
   // POST
   Add(data): Observable<User> {
     return this.http
-      .put<User>(this.baseurl, JSON.stringify(data), this.httpOptions)
+      .post<User>(this.baseurl, JSON.stringify(data), this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl))
   }
 

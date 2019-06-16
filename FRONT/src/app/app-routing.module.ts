@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { UserAddComponent } from './components/user/user-add.component';
-import { UserEditComponent } from './components/user/user-edit.component';
-import { UserListComponent } from './components/user/user-list.component';
+import { UserAddComponent } from './components/user/user-add/user-add.component';
+import { UserEditComponent } from './components/user/user-edit/user-edit.component';
+import { UserListComponent } from './components/user/user-list/user-list.component';
 
 import { ProjectAddComponent } from './components/project/project-add/project-add.component';
 import { ProjectEditComponent } from './components/project/project-edit/project-edit.component';

@@ -2,7 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { UserService } from '../../shared/user/user.service';
+import { UserService } from '../../../shared/user/user.service';
 
 @Component({
   selector: 'app-edit',
@@ -47,7 +47,7 @@ export class UserEditComponent implements OnInit {
     this.userService
       .Update(id, this.updateUserForm.value)
       .subscribe(res => {
-        this.ngZone.run(() => this.router.navigateByUrl('/users-list'))
+        this.ngZone.run(() => this.router.navigateByUrl('/user-list'))
       });
   }
 
