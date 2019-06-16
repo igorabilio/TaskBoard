@@ -18,17 +18,20 @@ import { UserListComponent } from './components/user/user-list/user-list.compone
 import { ProjectAddComponent } from './components/project/project-add/project-add.component';
 import { ProjectListComponent } from './components/project/project-list/project-list.component';
 import { ProjectEditComponent } from './components/project/project-edit/project-edit.component';
+import { DashboardComponent } from './components/home/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    DashboardComponent,
     UserAddComponent,
     UserEditComponent,
     UserListComponent,
     ProjectAddComponent,
     ProjectListComponent,
     ProjectEditComponent
+
   ],
   imports: [
     BrowserModule,

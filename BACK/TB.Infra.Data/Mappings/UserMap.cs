@@ -26,6 +26,11 @@ namespace TB.Infra.Data.Mappings
                 .IsRequired()
                 .HasColumnName("email")
                 .HasMaxLength(300);
+
+            builder.Property(c => c.Status)
+                .IsRequired()
+                .HasColumnName("status")
+                .HasMaxLength(1);
         }
     }
 }

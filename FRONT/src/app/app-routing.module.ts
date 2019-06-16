@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { DashboardComponent } from './components/home/dashboard/dashboard.component'
+
 import { UserAddComponent } from './components/user/user-add/user-add.component';
 import { UserEditComponent } from './components/user/user-edit/user-edit.component';
 import { UserListComponent } from './components/user/user-list/user-list.component';
@@ -10,7 +12,8 @@ import { ProjectEditComponent } from './components/project/project-edit/project-
 import { ProjectListComponent } from './components/project/project-list/project-list.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'user-list' },
+  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'user-add', component: UserAddComponent },
   { path: 'user-edit/:id', component: UserEditComponent },
   { path: 'user-list', component: UserListComponent },
