@@ -32,6 +32,10 @@ namespace TB.Infra.Data.Mappings
             builder.Property(c => c.Owner)
                 .IsRequired()
                 .HasColumnName("owner");
+
+            builder.Property(c => c.Status)
+                .IsRequired()
+                .HasColumnName("status");
         }
     }
 }

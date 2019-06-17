@@ -21,10 +21,10 @@ export class ProjectListComponent implements OnInit {
       .GetAll()
       .subscribe((data: {}) => {
         this.projectsList = data;
-    });
+      });
   }
 
-  delete(data){
+  delete(data) {
     var index = index = this.projectsList
       .map(x => {return x.name})
       .indexOf(data.name);

@@ -11,11 +11,11 @@ import { UserService } from '../../shared/user/user.service';
 export class UserEditComponent implements OnInit {
 
   updateUserForm = new FormGroup({
-    user_id: new FormControl(),
-    user_name: new FormControl(),
-    user_username: new FormControl(),
-    user_email: new FormControl(),
-    user_status: new FormControl()
+    id: new FormControl(),
+    name: new FormControl(),
+    username: new FormControl(),
+    email: new FormControl(),
+    status: new FormControl()
   });
 
   ngOnInit() {

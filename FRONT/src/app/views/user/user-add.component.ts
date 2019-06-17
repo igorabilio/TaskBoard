@@ -17,7 +17,6 @@ export class UserAddComponent implements OnInit {
     email: new FormControl(),
     status: new FormControl()
   });
-  userArr: any = [];
 
   ngOnInit() {
     this.add();

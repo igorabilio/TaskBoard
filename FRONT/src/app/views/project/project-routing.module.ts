@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectListComponent } from './project-list.component';
-import { pathToFileURL } from 'url';
+import { ProjectEditComponent } from './project-edit.component';
+import { ProjectAddComponent } from './project-add.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,20 @@ const routes: Routes = [
         component: ProjectListComponent,
         data: {
           title: 'List'
+        }
+      },
+      {
+        path: 'project-edit/:id',
+        component: ProjectEditComponent,
+        data: {
+          title: 'Edit'
+        }
+      },
+      {
+        path: 'project-add',
+        component: ProjectAddComponent,
+        data: {
+          title: 'New'
         }
       }
     ]

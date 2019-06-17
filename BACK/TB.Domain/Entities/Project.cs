@@ -9,5 +9,6 @@ namespace TB.Domain.Entities
         public string Description { get; private set; }
         public DateTime DueDate { get; set; }
         public Guid Owner { get; set; }
+        public string Status { get; set; }
     }
 }

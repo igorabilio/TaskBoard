@@ -5,4 +5,5 @@ export class Project{
     description: string;
     dueDate: string;
     owner: string;
+    status: string;
 }
