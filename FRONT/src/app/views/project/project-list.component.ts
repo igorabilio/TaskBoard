@@ -33,7 +33,6 @@ export class ProjectListComponent implements OnInit {
       .Delete(data.id)
       .subscribe(res => {
         this.projectsList.splice(index, 1)
-        console.log('Project deleted!')
       });
   }
 

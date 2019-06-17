@@ -11,19 +11,22 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="code">Code</label>
-                  <input type="text" class="form-control" id="code" name="code" formControlName="code" placeholder="Enter a project code">
+                  <input type="text" class="form-control" id="code" name="code" formControlName="code" 
+                    placeholder="Enter a project code">
                 </div>
               </div><!--/.col-->
               <div class="col-sm-6">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="Enter a project name">
+                  <input type="text" class="form-control" id="name" name="name" formControlName="name" 
+                    placeholder="Enter a project name">
                 </div>
               </div><!--/.col-->
               <div class="col-sm-2">
                 <div class="form-group">
                   <label for="dueDate">Due Date</label>
-                  <input type="text" class="form-control" id="dueDate" name="dueDate" formControlName="dueDate" placeholder="Enter a project due date">
+                  <input type="date" class="form-control" id="dueDate" name="dueDate" formControlName="dueDate" 
+                    placeholder="Enter a project due date">
                 </div>
               </div><!--/.col-->
             </div><!--/.row-->
@@ -31,7 +34,8 @@
               <div class="col-sm-12">
                 <div class="form-group">
                   <label for="description">Description</label>
-                  <textarea id="description" name="description" formControlName="description" class="form-control" placeholder="Enter a project description" rows="5"></textarea>
+                  <textarea id="description" name="description" formControlName="description" class="form-control" 
+                    placeholder="Enter a project description" rows="5"></textarea>
                 </div>
               </div><!--/.col-->
             </div><!--/.row-->
@@ -39,7 +43,8 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="owner">Owner</label>
-                  <input type="text" class="form-control" id="owner" name="owner" formControlName="owner" placeholder="Enter a project owner">
+                  <input type="text" class="form-control" id="owner" name="owner" formControlName="owner" 
+                    placeholder="Enter a project owner">
                 </div>
               </div><!--/.col-->
               <div class="col-sm-3">
@@ -55,7 +60,9 @@
           </div>
           <div class="card-footer">
             <button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
-            <button type="reset" class="btn btn-sm btn-danger" [routerLink]="['/project/project-list']"><i class="fa fa-ban"></i> Cancel</button>
+            <button type="reset" class="btn btn-sm btn-danger" [routerLink]="['/project/project-list']">
+              <i class="fa fa-ban"></i> Cancel
+            </button>
           </div><!--/.card-footer-->
         </div><!--/.card-->
       </div><!--/.col-->

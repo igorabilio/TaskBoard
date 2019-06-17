@@ -69,10 +69,12 @@ import { ChartsModule } from 'ng2-charts';
     P500Component,
     LoginComponent
   ],
-  providers: [{
-    provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  }],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 import { ProjectService } from '../../shared/project/project.service';
 
+
 @Component({
   selector: 'app-project-edit',
   templateUrl: './project-edit.component.html'
@@ -24,7 +25,9 @@ export class ProjectEditComponent implements OnInit {
     this.update();
   }
 
-  constructor(private actRoute: ActivatedRoute, public projectService: ProjectService, public fb: FormBuilder, private ngZone: NgZone, private router: Router) { 
+  constructor(private actRoute: ActivatedRoute, public projectService: ProjectService, public fb: FormBuilder, 
+    private ngZone: NgZone, private router: Router) { 
+
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.projectService
       .GetById(id)
@@ -34,7 +37,7 @@ export class ProjectEditComponent implements OnInit {
           code: [data.code],
           name: [data.name],
           description: [data.description],
-          dueDate: [data.dueDate],
+          dueDate: data.dueDate.substring(0, 10),
           owner: [data.owner],
           status: [data.status]
         })
@@ -55,6 +58,7 @@ export class ProjectEditComponent implements OnInit {
 
   submitForm() { 
     var id = this.actRoute.snapshot.paramMap.get('id');
+    this.updateProjectForm.value.dueDate = new Date(this.updateProjectForm.value.dueDate).toUTCString();
     this.projectService
       .Update(id, this.updateProjectForm.value)
       .subscribe(res => {
