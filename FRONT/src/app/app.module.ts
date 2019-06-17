@@ -1,48 +1,78 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { UserService } from './shared/user/user.service';
-import { ProjectService } from './shared/project/project.service'
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
-import { ReactiveFormsModule } from '@angular/forms';
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true
+};
 
-import { HeaderComponent } from './components/header/header.component';
-import { DashboardComponent } from './components/home/dashboard/dashboard.component';
+import { AppComponent } from './app.component';
 
-import { UserAddComponent } from './components/user/user-add/user-add.component';
-import { UserEditComponent } from './components/user/user-edit/user-edit.component';
-import { UserListComponent } from './components/user/user-list/user-list.component';
+// Import containers
+import { DefaultLayoutComponent } from './containers';
 
-import { ProjectAddComponent } from './components/project/project-add/project-add.component';
-import { ProjectListComponent } from './components/project/project-list/project-list.component';
-import { ProjectEditComponent } from './components/project/project-edit/project-edit.component';
+import { P404Component } from './views/error/404.component';
+import { P500Component } from './views/error/500.component';
+import { LoginComponent } from './views/login/login.component';
 
+const APP_CONTAINERS = [
+  DefaultLayoutComponent
+];
+
+import {
+  AppAsideModule,
+  AppBreadcrumbModule,
+  AppHeaderModule,
+  AppFooterModule,
+  AppSidebarModule,
+} from '@coreui/angular';
+
+// Import routing module
+import { AppRoutingModule } from './app.routing';
+
+// Import 3rd party components
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    DashboardComponent,
-    UserAddComponent,
-    UserEditComponent,
-    UserListComponent,
-    ProjectAddComponent,
-    ProjectListComponent,
-    ProjectEditComponent
-
-  ],
   imports: [
     BrowserModule,
+    CommonModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    AppAsideModule,
+    AppBreadcrumbModule.forRoot(),
+    AppFooterModule,
+    AppHeaderModule,
+    AppSidebarModule,
+    PerfectScrollbarModule,
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
+    ChartsModule,
+    HttpClientModule
   ],
-  providers: [UserService, ProjectService],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    ...APP_CONTAINERS,
+    P404Component,
+    P500Component,
+    LoginComponent
+  ],
+  providers: [{
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

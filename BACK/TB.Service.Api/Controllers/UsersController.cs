@@ -11,9 +11,7 @@ namespace TB.Service.Api.Controllers
     {
         public UsersController(IUserApp app) : base(app)
         {
-
+            
         }
-
-        
     }
 }

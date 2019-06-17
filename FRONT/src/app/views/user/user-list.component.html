@@ -1,0 +1,40 @@
+<div class="animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-md-10"><h3>Users</h3></div>
+                <div class="col-md-2 right">
+                  <a class="btn btn-primary btn-block" [routerLink]="['/user/user-add']"><i class="fa fa-user-o"></i>&nbsp;New User</a>
+                </div>
+              </div><!--/.row-->
+            </div>
+            <div class="card-body">
+              <table class="table table-striped">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th class=" text-center">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of usersList">
+                    <td><a [routerLink]="['/user/user-edit/', user.id]">{{user.name}}</a></td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td class="text-center" >
+                      <span class="badge badge-success" *ngIf="user.status == 'A'">Active</span>
+                      <span class="badge badge-danger" *ngIf="user.status == 'I'">Inactive</span>
+                      <span class="badge badge-secondary" *ngIf="user.status == 'B'">Blocked</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div><!--/.col-->
+      </div><!--/.row-->
+</div>

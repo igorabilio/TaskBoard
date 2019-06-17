@@ -22,7 +22,7 @@ namespace TB.Service.Api.Controllers
 
         [HttpGet]
         [Route("")]
-        public IActionResult Get()
+        public IActionResult GetAll()
         {
             try
             {
