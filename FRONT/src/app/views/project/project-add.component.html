@@ -39,21 +39,20 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="owner">Owner</label>
-                  <!-- <input type="text" class="form-control" id="owner" name="owner" formControlName="owner" placeholder="Enter a project owner"> -->
                   <select class="form-control" id="owner" name="owner" formControlName="owner">
-                      <option *ngFor="let user of userList" [ngValue]="user.id">{{user.name}}</option>
+                    <option *ngFor="let user of userList" [ngValue]="user.id">{{user.name}}</option>
                   </select>
                 </div>
               </div><!--/.col-->
               <div class="col-sm-3">
-                  <div class="form-group">
-                    <label for="status">Status</label>
-                    <select class="form-control" id="status" name="status" formControlName="status">
-                      <option value="A">Active</option>
-                      <option value="D">Done</option>
-                    </select>
-                  </div>
-                </div><!--/.col-->
+                <div class="form-group">
+                  <label for="status">Status</label>
+                  <select class="form-control" id="status" name="status" formControlName="status">
+                    <option value="A">Active</option>
+                    <option value="D">Done</option>
+                  </select>
+                </div>
+              </div><!--/.col-->
             </div><!--/.row-->
           </div>
           <div class="card-footer">

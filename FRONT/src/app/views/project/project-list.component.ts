@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { ProjectService } from '../../shared/project/project.service';
 import { UserService } from '../../shared/user/user.service';
-import { Project } from '../../shared/project/project';
 
 @Component({
   selector: 'app-project-list',
