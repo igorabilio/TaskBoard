@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 import { ProjectService } from '../../shared/project/project.service';
+import { UserService } from '../../shared/user/user.service';
 
 
 @Component({
@@ -21,12 +22,16 @@ export class ProjectEditComponent implements OnInit {
     status: new FormControl()
   });
 
+  userList: any = [];
+
   ngOnInit() {
     this.update();
   }
 
-  constructor(private actRoute: ActivatedRoute, public projectService: ProjectService, public fb: FormBuilder, 
-    private ngZone: NgZone, private router: Router) { 
+  constructor(private actRoute: ActivatedRoute, public projectService: ProjectService, public userService: UserService, 
+    public fb: FormBuilder, private ngZone: NgZone, private router: Router) { 
+
+    this.getUserForSelect();
 
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.projectService
@@ -66,4 +71,11 @@ export class ProjectEditComponent implements OnInit {
       });
   }
 
+  getUserForSelect(){
+    this.userService
+      .GetAll()
+      .subscribe((data: {}) => {
+        this.userList = data;
+      });
+  }
 }

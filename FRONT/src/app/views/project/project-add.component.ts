@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { ProjectService } from '../../shared/project/project.service';
+import { UserService } from '../../shared/user/user.service';
 
 
 @Component({
@@ -20,12 +21,15 @@ export class ProjectAddComponent implements OnInit {
     status: new FormControl()
   });
 
+  userList: any = [];
+
   ngOnInit() {
     this.add();
+    
   }
 
-  constructor(public projectService: ProjectService, public fb: FormBuilder, private ngZone: NgZone, private router: Router) { 
-
+  constructor(public projectService: ProjectService, public userService: UserService, public fb: FormBuilder, private ngZone: NgZone, private router: Router) { 
+    this.getUserForSelect();
   }
 
   add() {
@@ -44,6 +48,14 @@ export class ProjectAddComponent implements OnInit {
       .Add(this.addProjectForm.value)
       .subscribe(res => {
         this.ngZone.run(() => this.router.navigateByUrl('/project/project-list'));
+      });
+  }
+
+  getUserForSelect(){
+    this.userService
+      .GetAll()
+      .subscribe((data: {}) => {
+        this.userList = data;
       });
   }
 
