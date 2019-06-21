@@ -38,7 +38,7 @@ export const navItems: NavData[] = [
   {
     name: 'Projects',
     url: '/project',
-    icon: 'icon-puzzle',
+    icon: 'icon-folder',
     badge: {
       variant: 'info',
       text: 'NEW'
@@ -51,6 +51,6 @@ export const navItems: NavData[] = [
   {
     name: 'Users',
     url: '/user',
-    icon: 'icon-puzzle'
+    icon: 'icon-user'
   },
 ];

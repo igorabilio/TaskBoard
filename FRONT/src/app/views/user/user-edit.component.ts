@@ -56,4 +56,13 @@ export class UserEditComponent implements OnInit {
       });
   }
 
+  delete() {
+    var id = this.actRoute.snapshot.paramMap.get('id');
+    return this.userService
+      .Delete(id)
+      .subscribe(res => {
+        this.ngZone.run(() => this.router.navigateByUrl('/user/user-list'))
+      });
+  }
+
 }

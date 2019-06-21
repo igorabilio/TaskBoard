@@ -71,6 +71,15 @@ export class ProjectEditComponent implements OnInit {
       });
   }
 
+  delete() {
+    var id = this.actRoute.snapshot.paramMap.get('id');
+    return this.projectService
+      .Delete(id)
+      .subscribe(res => {
+        this.ngZone.run(() => this.router.navigateByUrl('/project/project-list'))
+      });
+  }
+
   getUserForSelect(){
     this.userService
       .GetAll()

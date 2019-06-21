@@ -6,7 +6,7 @@
           <div class="row">
             <div class="col-md-10"><h3>Projects</h3></div>
             <div class="col-md-2 right">
-              <a class="btn btn-primary btn-block" [routerLink]="['/project/project-add']"><i class="fa fa-user-o"></i>&nbsp;New Project</a>
+              <a class="btn btn-primary btn-block" [routerLink]="['/project/project-add']"><i class="fa fa-folder-o"></i>&nbsp;New Project</a>
             </div><!--/.col-->
           </div><!--/.row-->
         </div><!--/.card-header-->
@@ -19,6 +19,7 @@
                 <th>Due Date</th>
                 <th>Owner</th>
                 <th class=" text-center">Status</th>
+                <th class=" text-center">Tasks</th>
               </tr>
             </thead>
             <tbody>
@@ -31,6 +32,7 @@
                   <span class="badge badge-info" *ngIf="project.status == 'A'">Active</span>
                   <span class="badge badge-success" *ngIf="project.status == 'D'">Done</span>
                 </td>
+                <td class="text-center"><a [routerLink]="['/task/task-list']"><i class="fa fa-tasks"></i></a></td>
               </tr>
             </tbody>
           </table>

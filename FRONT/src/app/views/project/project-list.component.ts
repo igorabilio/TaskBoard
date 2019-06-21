@@ -34,16 +34,6 @@ export class ProjectListComponent implements OnInit {
       });
   }
 
-  delete(data) {
-    var index = index = this.projectsList
-      .map(x => {return x.name})
-      .indexOf(data.name);
-
-    return this.projectService
-      .Delete(data.id)
-      .subscribe(res => {
-        this.projectsList.splice(index, 1)
-      });
-  }
+  
 
 }
