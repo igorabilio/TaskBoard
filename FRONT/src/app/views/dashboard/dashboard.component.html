@@ -3,12 +3,12 @@
     <div class="col-sm-6 col-lg-3">
       <div class="card">
         <div class="card-body">
-          <div class="h4 m-0">5</div>
+          <div class="h4 m-0">{{qtdActiveProjects}}</div>
           <div>Active Projects</div>
           <div class="progress progress-xs my-3">
-            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-success" role="progressbar" style="width: 25%"></div>
+            <div class="progress-bar bg-success" role="progressbar" [style.width]='percActiveProjects'></div>
           </div>
-          <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
+          <small class="text-muted">You have {{qtdProjects}} projects in total.</small>
         </div>
       </div>
     </div><!--/.col-->
@@ -16,12 +16,12 @@
     <div class="col-sm-6 col-lg-3">
       <div class="card">
         <div class="card-body">
-          <div class="h4 m-0">12</div>
+          <div class="h4 m-0">{{qtdActiveTasks}}</div>
           <div>Active Tasks</div>
           <div class="progress progress-xs my-3">
-            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-info" role="progressbar" style="width: 25%"></div>
+            <div class="progress-bar bg-info" role="progressbar" [style.width]='percActiveTasks'></div>
           </div>
-          <small class="text-muted">Test uhasuhaushu</small>
+          <small class="text-muted">Yout have {{qtdTasks}} tasks in total.</small>
         </div>
       </div>
     </div><!--/.col-->
@@ -29,12 +29,12 @@
     <div class="col-sm-6 col-lg-3">
       <div class="card">
         <div class="card-body">
-          <div class="h4 m-0">3</div>
+          <div class="h4 m-0">{{qtdOverdueTasks}}</div>
           <div>Overdue Tasks</div>
           <div class="progress progress-xs my-3">
-            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-warning" role="progressbar" style="width: 25%"></div>
+            <div class="progress-bar bg-warning" role="progressbar" [style.width]='percOverdueTasks'></div>
           </div>
-          <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
+          <small class="text-muted">You have {{qtdActiveTasks}} active tasks in total.</small>
         </div>
       </div>
     </div><!--/.col-->
@@ -42,12 +42,12 @@
     <div class="col-sm-6 col-lg-3">
       <div class="card">
         <div class="card-body">
-          <div class="h4 m-0">7</div>
+          <div class="h4 m-0">{{qtdActiveUsers}}</div>
           <div>Active Users</div>
           <div class="progress progress-xs my-3">
-            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-danger" role="progressbar" style="width: 25%"></div>
+            <div class="progress-bar bg-danger" role="progressbar" [style.width]='percActiveUsers'></div>
           </div>
-          <small class="text-muted">Lorem ipsum dolor sit amet enim.</small>
+          <small class="text-muted">You have {{qtdUsers}} users in total.</small>
         </div>
       </div>
     </div><!--/.col-->

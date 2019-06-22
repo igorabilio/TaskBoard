@@ -26,7 +26,7 @@
               <tr *ngFor="let project of projectsList">
                 <td><a [routerLink]="['/project/project-edit/', project.id]">{{project.code}}</a></td>
                 <td>{{project.name}}</td>
-                <td>{{project.dueDate | date: 'dd/MM/yyyy'}}</td>
+                <td>{{project.dueDate | date: 'MM/dd/yyyy'}}</td>
                 <td>{{project.owner}}</td>
                 <td class="text-center" >
                   <span class="badge badge-info" *ngIf="project.status == 'A'">Active</span>

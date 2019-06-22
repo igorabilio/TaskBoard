@@ -18,21 +18,21 @@
                 <th>Name</th>
                 <th>Due Date</th>
                 <th>Project</th>
+                <th>Assigned To</th>
                 <th class=" text-center">Status</th>
-                <th class=" text-center">Assigned To</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let task of taskList">
                 <td><a [routerLink]="['/task/task-edit/', task.id]">{{task.code}}</a></td>
                 <td>{{task.name}}</td>
-                <td>{{task.dueDate | date: 'dd/MM/yyyy'}}</td>
+                <td>{{task.dueDate | date: 'MM/dd/yyyy'}}</td>
                 <td>{{task.projectId}}</td>
+                <td>{{task.assignedTo}}</td>
                 <td class="text-center" >
                   <span class="badge badge-info" *ngIf="task.status == 'A'">Active</span>
                   <span class="badge badge-success" *ngIf="task.status == 'D'">Done</span>
                 </td>
-                <td class="text-center">{{task.assignedTo}}</td>
               </tr>
             </tbody>
           </table>
