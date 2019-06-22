@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace TB.Domain.Entities
+namespace TB.Aplication.DTO
 {
-    public class Task : BaseEntity
+    public class TaskDTO : BaseDTO
     {
-        public Guid ProjectId{ get; set; }
+        public Guid ProjectId { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

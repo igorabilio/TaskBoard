@@ -16,17 +16,20 @@ namespace TB.Infra.Ioc
             svcCollection.AddScoped(typeof(IBaseApp<,>), typeof(BaseServiceApp<,>));
             svcCollection.AddScoped<IUserApp, UserApp>();
             svcCollection.AddScoped<IProjectApp, ProjectApp>();
+            svcCollection.AddScoped<ITaskApp, TaskApp>();
 
             //Domain
             svcCollection.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
             svcCollection.AddScoped<IUserService, UserService>();
             svcCollection.AddScoped<IProjectService, ProjectService>();
+            svcCollection.AddScoped<ITaskService, TaskService>();
 
             //Repository
             svcCollection.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             svcCollection.AddScoped<IUserRepository, UserRepository>();
             svcCollection.AddScoped<IProjectRepository, ProjectRepository>();
-            
+            svcCollection.AddScoped<ITaskRepository, TaskRepository>();
+
         }
     }
 }

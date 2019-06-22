@@ -53,6 +53,10 @@ export const routes: Routes = [
       {
         path: 'project',
         loadChildren: () => import('./views/project/project.module').then(m => m.ProjectModule)
+      },
+      {
+        path: 'task',
+        loadChildren: () => import('./views/task/task.module').then(m => m.TaskModule)
       }
     ]
   },

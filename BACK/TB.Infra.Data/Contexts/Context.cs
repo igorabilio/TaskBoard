@@ -11,6 +11,7 @@ namespace TB.Infra.Data.Contexts
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<Task> Tasks { get; set; }
 
         public IDbContextTransaction Transaction { get; private set; }
 
@@ -77,6 +78,7 @@ namespace TB.Infra.Data.Contexts
 
             modelBuilder.ApplyConfiguration(new UserMap());
             modelBuilder.ApplyConfiguration(new ProjectMap());
+            modelBuilder.ApplyConfiguration(new TaskMap());
         }
     }
 }

@@ -13,6 +13,9 @@ namespace TB.Aplication
 
             CreateMap<Project, ProjectDTO>();
             CreateMap<ProjectDTO, Project>();
+
+            CreateMap<Task, TaskDTO>();
+            CreateMap<TaskDTO, Task>();
         }
     }
 }

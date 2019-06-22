@@ -38,7 +38,12 @@ export const navItems: NavData[] = [
   {
     name: 'Projects',
     url: '/project',
-    icon: 'icon-folder',
+    icon: 'icon-folder'
+  },
+  {
+    name: 'Tasks',
+    url: '/task',
+    icon: 'icon-list',
     badge: {
       variant: 'info',
       text: 'NEW'
