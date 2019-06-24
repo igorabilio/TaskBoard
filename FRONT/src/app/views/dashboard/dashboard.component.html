@@ -65,35 +65,33 @@
               <tr>
                 <th>Project</th>
                 <th class="text-center">Qtd. Tasks</th>
-                <th>Percentage</th>
+                <th class="text-center">Percentage</th>
                 <th class="text-center">Due Date</th>
                 <th class="text-center">Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <div>Pilot Project</div>
-                  <div class="small text-muted">
-                    <span>New</span> | Registered: Jan 1, 2015
-                  </div>
-                </td>
-                <td class="text-center">12</td>
-                <td>
+              <tr *ngFor="let project of projectsList">
+                <td>{{project.name}}</td>
+                <td class="text-center">{{project.qtdTasks}}</td>
+                <td class="text-center">
                   <div class="clearfix">
                     <div class="float-left">
-                      <strong>50%</strong>
+                      <strong>{{project.percDoneTasks}}</strong>
                     </div>
                     <div class="float-right">
-                      <small class="text-muted">Jun 11, 2015 - Jul 10, 2015</small>
+                      <small class="text-muted">{{project.qtdDoneTasks}} - {{project.qtdTasks}}</small>
                     </div>
                   </div>
                   <div class="progress progress-xs">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-success" role="progressbar" [style.width]="project.percDoneTasks"></div>
                   </div>
                 </td>
-                <td class="text-center">30/06/2019</td>
-                <td class="text-center">A</td>
+                <td class="text-center">{{project.dueDate | date: 'MM/dd/yyyy'}}</td>
+                <td class="text-center">
+                  <span class="badge badge-info" *ngIf="project.status == 'A'">Active</span>
+                  <span class="badge badge-success" *ngIf="project.status == 'D'">Done</span>
+                </td>
               </tr>
             </tbody>
           </table>

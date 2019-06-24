@@ -24,37 +24,41 @@ export class TaskService {
   GetAll(): Observable<Task> {
     return this.http
       .get<Task>(this.baseurl)
-      .pipe(retry(1), catchError(this.errorHandl)
-    )
+      .pipe(retry(1), catchError(this.errorHandl));
+  }
+
+  GetAllByProject(projectId): Observable<Task> {
+    return this.http
+      .get<Task>(environment.baseUrl + "api/projects/" + projectId + "/tasks")
+      .pipe(retry(1), catchError(this.errorHandl));
   }
 
   // GET
   GetById(id): Observable<Task> {
     return this.http
       .get<Task>(this.baseurl + id)
-      .pipe(retry(1), catchError(this.errorHandl)
-    )
+      .pipe(retry(1), catchError(this.errorHandl));
   }
 
   // POST
   Add(data): Observable<Task> {
     return this.http
       .post<Task>(this.baseurl, JSON.stringify(data), this.httpOptions)
-      .pipe(retry(1), catchError(this.errorHandl))
+      .pipe(retry(1), catchError(this.errorHandl));
   }
 
   // PUT
   Update(id, data): Observable<Task> {
     return this.http
       .post<Task>(this.baseurl + id, JSON.stringify(data), this.httpOptions)
-      .pipe(retry(1), catchError(this.errorHandl)) 
+      .pipe(retry(1), catchError(this.errorHandl));
   }
 
   // DELETE
   Delete(id){
     return this.http
       .delete<Task>(this.baseurl + id, this.httpOptions)
-      .pipe(retry(1), catchError(this.errorHandl))
+      .pipe(retry(1), catchError(this.errorHandl));
   }
 
   // Error handling
