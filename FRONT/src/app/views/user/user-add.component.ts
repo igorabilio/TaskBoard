@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { UserService } from '../../shared/user/user.service';
@@ -11,31 +11,33 @@ import { UserService } from '../../shared/user/user.service';
 })
 export class UserAddComponent implements OnInit {
 
-  addUserForm = new FormGroup({
-    name: new FormControl(),
-    username: new FormControl(),
-    email: new FormControl(),
-    status: new FormControl()
-  });
+  addUserForm: FormGroup;
+  submitted = false;
 
   ngOnInit() {
     this.add();
   }
 
-  constructor(public userService: UserService, public fb: FormBuilder, private ngZone: NgZone, private router: Router) { 
+  constructor(public fb: FormBuilder, public userService: UserService, private ngZone: NgZone, private router: Router) { 
 
   }
 
   add() {
     this.addUserForm = this.fb.group({
-      name: [''],
-      username: [''],
-      email: [''],
-      status: ['']
+      name: ['', [Validators.required, Validators.maxLength(150)]],
+      username: ['', [Validators.required, Validators.maxLength(150)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(150)]],
+      status: ['', Validators.required]
     });
   }
 
+  get f() { return this.addUserForm.controls; }
+
   submitForm() {
+    this.submitted = true;
+    
+    if (this.addUserForm.invalid) { return; }
+
     this.userService
       .Add(this.addUserForm.value)
       .subscribe(res => {

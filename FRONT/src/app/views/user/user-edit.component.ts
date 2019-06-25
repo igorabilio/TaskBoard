@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { UserService } from '../../shared/user/user.service';
 
@@ -10,49 +10,52 @@ import { UserService } from '../../shared/user/user.service';
 })
 export class UserEditComponent implements OnInit {
 
-  updateUserForm = new FormGroup({
-    id: new FormControl(),
-    name: new FormControl(),
-    username: new FormControl(),
-    email: new FormControl(),
-    status: new FormControl()
-  });
+  updateUserForm: FormGroup;
+  submitted = false;
 
   ngOnInit() {
     this.update();
   }
 
-  constructor(private actRoute: ActivatedRoute, public userService: UserService, public fb: FormBuilder, private ngZone: NgZone, private router: Router) { 
+  constructor(public fb: FormBuilder, public userService: UserService, private actRoute: ActivatedRoute, private ngZone: NgZone, 
+    private router: Router) { 
+
     var id = this.actRoute.snapshot.paramMap.get('id');
+    
     this.userService
       .GetById(id)
       .subscribe((data) => {
         this.updateUserForm = this.fb.group({
           id: [data.id],
-          name: [data.name],
-          username: [data.username],
-          email: [data.email],
-          status: [data.status]
-        })
+          name: [data.name, [Validators.required, Validators.maxLength(150)]],
+          username: [data.username, [Validators.required, Validators.maxLength(150)]],
+          email: [data.email, [Validators.required, Validators.email, Validators.maxLength(150)]],
+          status: [data.status, Validators.required]
+        });
       });
   }
 
   update() {
     this.updateUserForm = this.fb.group({
-      id: [''],
-      name: [''],
-      username: [''],
-      email: [''],
-      status: ['']
+      name: ['', [Validators.required, Validators.maxLength(150)]],
+      username: ['', [Validators.required, Validators.maxLength(150)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(150)]],
+      status: ['', Validators.required]
     });
   }
 
+  get f() { return this.updateUserForm.controls; }
+
   submitForm() { 
+    this.submitted = true;
+    
+    if (this.updateUserForm.invalid) { return; }
+    
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.userService
       .Update(id, this.updateUserForm.value)
-      .subscribe(res => {
-        this.ngZone.run(() => this.router.navigateByUrl('/user/user-list'))
+      .subscribe(() => {
+        this.ngZone.run(() => this.router.navigateByUrl('/user/user-list'));
       });
   }
 
@@ -60,8 +63,8 @@ export class UserEditComponent implements OnInit {
     var id = this.actRoute.snapshot.paramMap.get('id');
     return this.userService
       .Delete(id)
-      .subscribe(res => {
-        this.ngZone.run(() => this.router.navigateByUrl('/user/user-list'))
+      .subscribe(() => {
+        this.ngZone.run(() => this.router.navigateByUrl('/user/user-list'));
       });
   }
 
