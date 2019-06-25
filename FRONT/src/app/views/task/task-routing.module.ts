@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TaskListComponent } from './task-list.component';
 import { TaskAddComponent } from './task-add.component';
 import { TaskEditComponent } from './task-edit.component';
+import { componentFactoryName } from '@angular/compiler';
 
 const routes: Routes = [
   {

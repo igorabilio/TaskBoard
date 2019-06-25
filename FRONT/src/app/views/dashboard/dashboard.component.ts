@@ -14,14 +14,13 @@ export class DashboardComponent implements OnInit {
   qtdActiveProjects: any;
   percActiveProjects: any;
 
-  tasksList: any = [];
+  tasksByProj: any = [];
   qtdTasks: any;
   qtdActiveTasks: any;
   percActiveTasks: any;
   qtdOverdueTasks: any;
   percOverdueTasks: any;
 
-  usersList: any = [];
   qtdUsers: any;
   qtdActiveUsers: any;
   percActiveUsers: any;
@@ -45,37 +44,15 @@ export class DashboardComponent implements OnInit {
       .subscribe((data) => {
         this.projectsList = data;
         this.qtdProjects = this.projectsList.length;
-        let tasks: any = [];
 
-        this.projectsList.forEach(project => {
-
-          if (project.status == "A") {
+        this.projectsList.forEach(proj => {
+          if (proj.status == "A") {
             this.qtdActiveProjects++;
           }
 
-          this.taskService
-            .GetAllByProject(project.id)
-            .subscribe((data) => {
-              tasks = data;
-              project.qtdTasks = tasks.length;
-              let qtdDoneTasks: number = 0;
-              
-              tasks.forEach(task => {
-                console.log(task);
-                //if (task.status == "D") {
-                  qtdDoneTasks++;
-                //}
-              });
-
-              project.qtdDoneTasks = qtdDoneTasks;
-            });
-          //console.log(project);
-          console.log(project.qtdDoneTasks);
-          let percByProj: number = 0;
-          if (project.qtdDoneTasks > 0) {
-            percByProj = (project.qtdDoneTasks / project.qtdTasks) * 100;
-          }
-          project.percDoneTasks = percByProj.toString() + "%";
+          proj.qtdTasks = 2;
+          proj.qtdDoneTasks = 1;
+          proj.percDoneTasks = (proj.qtdDoneTasks / proj.qtdTasks * 100).toString() + "%";
         });
 
         let perc = this.qtdActiveProjects / this.qtdProjects * 100;
@@ -85,16 +62,17 @@ export class DashboardComponent implements OnInit {
 
   getTasksInfo() {
     let today = new Date().toLocaleString()
+    let tasksList: any = [];
     this.qtdActiveTasks = 0;
     this.qtdOverdueTasks = 0;
 
     this.taskService
       .GetAll()
       .subscribe((data) => {
-        this.tasksList = data;
-        this.qtdTasks = this.tasksList.length;
+        tasksList = data;
+        this.qtdTasks = tasksList.length;
 
-        this.tasksList.forEach(task => {
+        tasksList.forEach(task => {
           if (task.status == "A") {
             this.qtdActiveTasks++;
             let dd = new Date(task.dueDate).toLocaleString();
@@ -112,15 +90,16 @@ export class DashboardComponent implements OnInit {
   }
 
   getUsersInfo() {
+    let usersList: any = [];
     this.qtdActiveUsers = 0;
 
     this.userService
       .GetAll()
       .subscribe((data) => {
-        this.usersList = data;
-        this.qtdUsers = this.usersList.length;
+        usersList = data;
+        this.qtdUsers = usersList.length;
 
-        this.usersList.forEach(user => {
+        usersList.forEach(user => {
           if (user.status == "A") {
             this.qtdActiveUsers++;
           }

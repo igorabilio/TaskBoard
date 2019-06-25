@@ -64,7 +64,6 @@
             <thead class="thead-light">
               <tr>
                 <th>Project</th>
-                <th class="text-center">Qtd. Tasks</th>
                 <th class="text-center">Percentage</th>
                 <th class="text-center">Due Date</th>
                 <th class="text-center">Status</th>
@@ -73,7 +72,6 @@
             <tbody>
               <tr *ngFor="let project of projectsList">
                 <td>{{project.name}}</td>
-                <td class="text-center">{{project.qtdTasks}}</td>
                 <td class="text-center">
                   <div class="clearfix">
                     <div class="float-left">
