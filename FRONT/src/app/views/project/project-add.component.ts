@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { ProjectService } from '../../shared/project/project.service';
@@ -12,16 +12,9 @@ import { UserService } from '../../shared/user/user.service';
 })
 export class ProjectAddComponent implements OnInit {
 
-  addProjectForm = new FormGroup({
-    code: new FormControl(),
-    name: new FormControl(),
-    description: new FormControl(),
-    dueDate: new FormControl(),
-    owner: new FormControl(),
-    status: new FormControl()
-  });
-
+  addProjectForm: FormGroup;
   userList: any = [];
+  submitted = false;
 
   ngOnInit() {
     this.add();
@@ -34,16 +27,22 @@ export class ProjectAddComponent implements OnInit {
 
   add() {
     this.addProjectForm = this.fb.group({
-      code: [''],
-      name: [''],
+      code: ['', [Validators.required, Validators.maxLength(150)]],
+      name: ['', [Validators.required, Validators.maxLength(150)]],
       description: [''],
-      dueDate: [''],
-      owner: [''],
-      status: ['']
+      dueDate: ['', Validators.required],
+      owner: ['', Validators.required],
+      status: ['', Validators.required]
     });
   }
 
+  get f() { return this.addProjectForm.controls; }
+
   submitForm() {
+    this.submitted = true;
+    
+    if (this.addProjectForm.invalid) { return; }
+
     this.projectService
       .Add(this.addProjectForm.value)
       .subscribe(res => {
