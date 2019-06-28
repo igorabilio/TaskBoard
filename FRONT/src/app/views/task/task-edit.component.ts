@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TaskService } from '../../shared/task/task.service';
 import { UserService } from '../../shared/user/user.service';
@@ -13,19 +13,10 @@ import { ProjectService } from '../../shared/project/project.service';
 })
 export class TaskEditComponent implements OnInit {
 
-  updateTaskForm = new FormGroup({
-    id: new FormControl(),
-    projectId: new FormControl(),
-    code: new FormControl(),
-    name: new FormControl(),
-    description: new FormControl(),
-    dueDate: new FormControl(),
-    status: new FormControl(),
-    assignedTo: new FormControl()
-  });
-
+  updateTaskForm: FormGroup;
   userList: any = [];
   projectList: any = [];
+  submitted = false;
 
   ngOnInit() {
     this.update();
@@ -43,13 +34,13 @@ export class TaskEditComponent implements OnInit {
       .subscribe((data) => {
         this.updateTaskForm = this.fb.group({
           id: [data.id],
-          projectId: [data.projectId],
-          code: [data.code],
-          name: [data.name],
-          description: [data.description],
-          dueDate: data.dueDate.substring(0, 10),
-          status: [data.status],
-          assignedTo: [data.assignedTo]
+          projectId: [data.projectId, Validators.required],
+          code: [data.code, [Validators.required, Validators.maxLength(10)]],
+          name: [data.name, [Validators.required, Validators.maxLength(150)]],
+          description: [data.description, [Validators.required, Validators.maxLength(500)]],
+          dueDate: [data.dueDate.substring(0, 10), Validators.required],
+          status: [data.status, Validators.required],
+          assignedTo: [data.assignedTo, Validators.required]
         })
       });
   }
@@ -57,17 +48,23 @@ export class TaskEditComponent implements OnInit {
   update() {
     this.updateTaskForm = this.fb.group({
       id: [''],
-      projectId: [''],
-      code: [''],
-      name: [''],
-      description: [''],
-      dueDate: [''],
-      status: [''],
-      assignedTo: ['']
+      projectId: ['', Validators.required],
+      code: ['', [Validators.required, Validators.maxLength(10)]],
+      name: ['', [Validators.required, Validators.maxLength(150)]],
+      description: ['', [Validators.required, Validators.maxLength(500)]],
+      dueDate: ['', Validators.required],
+      status: ['', Validators.required],
+      assignedTo: ['', Validators.required]
     });
   }
 
+  get f() { return this.updateTaskForm.controls; }
+
   submitForm() { 
+    this.submitted = true;
+    
+    if (this.updateTaskForm.invalid) { return; }
+
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.updateTaskForm.value.dueDate = new Date(this.updateTaskForm.value.dueDate).toUTCString();
     this.taskService

@@ -11,21 +11,33 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="projectId">Project</label>
-                  <select class="form-control" id="projectId" name="projectId" formControlName="projectId">
-                      <option *ngFor="let project of projectList" [ngValue]="project.id">{{project.name}}</option>
-                    </select>
+                  <select class="form-control" id="projectId" name="projectId" formControlName="projectId" 
+                    [ngClass]="{ 'is-invalid': submitted && f.projectId.errors }">
+                    <option *ngFor="let project of projectList" [ngValue]="project.id">{{project.name}}</option>
+                  </select>
+                  <div *ngIf="submitted && f.projectId.errors" class="invalid-feedback">
+                    <div *ngIf="f.projectId.errors.required">Project is required</div>
+                  </div>
                 </div>
               </div><!--/.col-->
               <div class="col-sm-3">
                 <div class="form-group">
                   <label for="code">Code</label>
-                  <input type="text" class="form-control" id="code" name="code" formControlName="code" placeholder="Enter a project code">
+                  <input type="text" class="form-control" id="code" name="code" formControlName="code" 
+                    placeholder="Enter a project code" [ngClass]="{ 'is-invalid': submitted && f.code.errors }">
+                  <div *ngIf="submitted && f.code.errors" class="invalid-feedback">
+                    <div *ngIf="f.code.errors.required">Code is required</div>
+                  </div>
                 </div>
               </div><!--/.col-->
               <div class="col-sm-5">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="Enter a project name">
+                  <input type="text" class="form-control" id="name" name="name" formControlName="name" 
+                    placeholder="Enter a project name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                  <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Name is required</div>
+                  </div>
                 </div>
               </div><!--/.col-->
             </div><!--/.row-->
@@ -33,7 +45,11 @@
               <div class="col-sm-12">
                 <div class="form-group">
                   <label for="description">Description</label>
-                  <textarea id="description" name="description" formControlName="description" class="form-control" placeholder="Enter a project description" rows="5"></textarea>
+                  <textarea id="description" name="description" formControlName="description" class="form-control" 
+                    placeholder="Enter a project description" rows="5" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+                  <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                    <div *ngIf="f.description.errors.required">Description is required</div>
+                  </div>
                 </div>
               </div><!--/.col-->
             </div><!--/.row-->
@@ -41,24 +57,36 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="dueDate">Due Date</label>
-                  <input type="date" class="form-control" id="dueDate" name="dueDate" formControlName="dueDate" placeholder="Enter a project due date">
+                  <input type="date" class="form-control" id="dueDate" name="dueDate" formControlName="dueDate" 
+                    placeholder="Enter a project due date" [ngClass]="{ 'is-invalid': submitted && f.dueDate.errors }">
+                  <div *ngIf="submitted && f.dueDate.errors" class="invalid-feedback">
+                    <div *ngIf="f.dueDate.errors.required">Due Date is required</div>
+                  </div>
                 </div>
               </div><!--/.col-->
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="owner">Assigned To</label>
-                  <select class="form-control" id="assignedTo" name="assignedTo" formControlName="assignedTo">
+                  <select class="form-control" id="assignedTo" name="assignedTo" formControlName="assignedTo" 
+                    [ngClass]="{ 'is-invalid': submitted && f.assignedTo.errors }">
                     <option *ngFor="let user of userList" [ngValue]="user.id">{{user.name}}</option>
                   </select>
+                  <div *ngIf="submitted && f.assignedTo.errors" class="invalid-feedback">
+                    <div *ngIf="f.assignedTo.errors.required">Assigned To is required</div>
+                  </div>
                 </div>
               </div><!--/.col-->
               <div class="col-sm-4">
                 <div class="form-group">
                   <label for="status">Status</label>
-                  <select class="form-control" id="status" name="status" formControlName="status">
+                  <select class="form-control" id="status" name="status" formControlName="status" 
+                    [ngClass]="{ 'is-invalid': submitted && f.status.errors }">
                     <option value="A">Active</option>
                     <option value="D">Done</option>
                   </select>
+                  <div *ngIf="submitted && f.status.errors" class="invalid-feedback">
+                    <div *ngIf="f.status.errors.required">Status is required</div>
+                  </div>
                 </div>
               </div><!--/.col-->
             </div><!--/.row-->
