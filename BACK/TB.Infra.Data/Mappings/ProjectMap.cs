@@ -27,6 +27,7 @@ namespace TB.Infra.Data.Mappings
                 .HasMaxLength(300);
 
             builder.Property(c => c.DueDate)
+                .IsRequired()
                 .HasColumnName("due_date");
 
             builder.Property(c => c.Owner)

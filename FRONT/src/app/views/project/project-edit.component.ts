@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ProjectService } from '../../shared/project/project.service';
 import { UserService } from '../../shared/user/user.service';
@@ -12,17 +12,10 @@ import { UserService } from '../../shared/user/user.service';
 })
 export class ProjectEditComponent implements OnInit {
 
-  updateProjectForm = new FormGroup({
-    id: new FormControl(),
-    code: new FormControl(),
-    name: new FormControl(),
-    description: new FormControl(),
-    dueDate: new FormControl(),
-    owner: new FormControl(),
-    status: new FormControl()
-  });
-
+  updateProjectForm: FormGroup;
   userList: any = [];
+  submitted = false;
+
 
   ngOnInit() {
     this.update();
@@ -39,29 +32,35 @@ export class ProjectEditComponent implements OnInit {
       .subscribe((data) => {
         this.updateProjectForm = this.fb.group({
           id: [data.id],
-          code: [data.code],
-          name: [data.name],
+          code: [data.code, [Validators.required, Validators.maxLength(10)]],
+          name: [data.name, [Validators.required, Validators.maxLength(150)]],
           description: [data.description],
-          dueDate: data.dueDate.substring(0, 10),
-          owner: [data.owner],
-          status: [data.status]
-        })
+          dueDate: [data.dueDate.substring(0, 10), Validators.required],
+          owner: [data.owner, Validators.required],
+          status: [data.status, Validators.required]
+        });
       });
   }
 
   update() {
     this.updateProjectForm = this.fb.group({
       id: [''],
-      code: [''],
-      name: [''],
+      code: ['', [Validators.required, Validators.maxLength(10)]],
+      name: ['', [Validators.required, Validators.maxLength(150)]],
       description: [''],
-      dueDate: [''],
-      owner: [''],
-      status: ['']
+      dueDate: ['', Validators.required],
+      owner: ['', Validators.required],
+      status: ['', Validators.required]
     });
   }
 
+  get f() { return this.updateProjectForm.controls; }
+
   submitForm() { 
+    this.submitted = true;
+    
+    if (this.updateProjectForm.invalid) { return; }
+
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.updateProjectForm.value.dueDate = new Date(this.updateProjectForm.value.dueDate).toUTCString();
     this.projectService

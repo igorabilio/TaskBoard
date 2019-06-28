@@ -27,7 +27,7 @@ export class ProjectAddComponent implements OnInit {
 
   add() {
     this.addProjectForm = this.fb.group({
-      code: ['', [Validators.required, Validators.maxLength(150)]],
+      code: ['', [Validators.required, Validators.maxLength(10)]],
       name: ['', [Validators.required, Validators.maxLength(150)]],
       description: [''],
       dueDate: ['', Validators.required],
