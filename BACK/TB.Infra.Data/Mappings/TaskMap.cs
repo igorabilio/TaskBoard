@@ -34,6 +34,7 @@ namespace TB.Infra.Data.Mappings
                 .HasMaxLength(500);
 
             builder.Property(c => c.DueDate)
+                .IsRequired()
                 .HasColumnName("due_date");
 
             builder.Property(c => c.Status)
@@ -42,6 +43,7 @@ namespace TB.Infra.Data.Mappings
                 .HasMaxLength(1);
 
             builder.Property(c => c.AssignedTo)
+                .IsRequired()
                 .HasColumnName("assigned_to");
         }
     }
